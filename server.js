@@ -14,7 +14,7 @@ var app = express();
 var corsOptions = {
 	origin: 'http://localhost:8999'
 };
-
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(cors(corsOptions));
@@ -24,7 +24,7 @@ app.use(session({ secret: config.sessionSecret }));
 
 
 
-
 app.listen(8999, function(){
-  console.log("im a lover not a runner");
+  console.log("im a lover not a runner!");
+
 });

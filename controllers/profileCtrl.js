@@ -22,10 +22,17 @@ var profiles = [
 ];
 module.exports = {
 
-  getFriends: function(res, req){
-
-    var friend = [];
-     req.session.currentUser.friends.length;
-  }
+	pushProfile: function(req, res, next) {
+     var friendsArray = [];
+     req.session.currentUser.friends.forEach(function(elem) {
+       profiles.forEach(function(obj) {
+         if (elem === obj.name) friendsArray.push(obj);
+       });
+     });
+     res.send({
+     currentUser: req.session.currentUser,
+     friends: friendsArray
+ });
+   }
 
 };
